@@ -18,7 +18,7 @@ Param(
 
 ## New-LabDefinition
 
-Immediately following your parameter block, you should call the `New-LabDefinition cmdlet and provide the name of your lab, and the default virtualization engine.
+Immediately following your parameter block, you should call the `New-LabDefinition` cmdlet and provide the name of your lab, and the default virtualization engine.
 Valid options for the virtualization engine are `HyperV` and `Azure`.
 
 ```powershell
@@ -27,4 +27,4 @@ New-LabDefinition -Name $Name -DefaultVirtualizationEngine Hyperv
 
 ## Next Steps
 
-With this required information in place you may continue to define your lab requirements. Once you are satisfied, save your PowerShell script so you can provide it `New-LabConfiguration` using the `-Definition` parameter.
+With this required information in place you may continue to define your lab requirements. Once you are satisfied, save your PowerShell script so you can provide it `New-LabConfiguration` using the `-Definition` parameter. You can also create a Github Gist or place the ps1 file in a repository and provide the raw link to the `-Url` parameter!

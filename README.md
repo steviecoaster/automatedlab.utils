@@ -27,13 +27,13 @@ Import-Module ./AutomatedLab.Utils/0.1.0/AutomatedLab.Utils.psd1
 
 ### Install through the PowerShell Gallery (COMING SOON):
 
-###### Windows PowerShell
+#### Windows PowerShell
 
 ```powershell
 Install-Module AutomatedLab.Utils -Scope CurrentUser
 ```
 
-###### PowerShell 7+
+#### PowerShell 7+
 
 ```powershell
 Install-PSResource AutomatedLab.Utils -Scope CurrentUser
@@ -50,7 +50,8 @@ choco install automatedlab.utils -y -s https://community.chocolatey.org/api/v2
 Defining a lab requires 3 pieces of information:
 
 - Name: This is a name for  your configuration. (TIP! Make this the same as the name in your definition file)
-- Definition: This is a PowerShell script that defines how your lab is built. See [Defining a Lab Definition](Definitions.md) for more information.
+- Definition: This is a PowerShell script that defines how your lab is built. You can supply a definition via `-Definition` for a local file,
+or via `-Url` to provide a link to a ps1 script hosted as a Github gist, or in a repository. See [Defining a Lab Definition](Definitions.md) for more information.
 - Parameters: This is a hashtable of parameters to pass to the PowerShell script
 
 For example, here is my configuration for my lab based on [Chocolatey's Quickstart Guide](https://docs.chocolatey.org/en-us/c4b-environments/quick-start-environment/chocolatey-for-business-quick-start-guide/).
