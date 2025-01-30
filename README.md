@@ -8,8 +8,6 @@ This module uses the [Configuration](https://github.com/PoshCode/Configuration) 
 to persist your lab configurations to disk in a secure manner. For simplicity sake configurations
 are saved using $env:USERNAME scope, although additional scopes _may_ be added in the future.
 
-
-
 ## Installation
 
 ### BEFORE YOU BEGIN
