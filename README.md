@@ -18,7 +18,10 @@ Ensure that you have installed AutomatedLab (We'll assume you have since you wis
 
 ### Build from source
 
+Building from source will require ModuleBuilder from the PowerShell Gallery:
+
 ```powershell
+Install-Module ModuleBuilder -Scope CurrentUser
 git clone https:github.com/steviecoaster/automatedlab.utils.git
 cd automatedlab.utils
 . ./Build.ps1
