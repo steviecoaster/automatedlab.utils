@@ -71,6 +71,21 @@ $params =  @{
 New-LabConfiguration @params
 ```
 
+## Adding a Custom Role
+
+One of AutomatedLabs best features is the ability to define Custom Roles. These Roles are PowerShell that run after the VM has been provisioned, but before it is handed back to you for use. Think of a Custom Role _kind of_ like activies  you can define during Sysprep. They have a specific shape, and this command makes it very easy for you to just provide what you want to include with the Role, and it gets created.
+
+```powershell
+new-customRole -Name InedoProGet -InitScript "C:\LabSources\CustomRoles\Inedo\InedoProGet.ps1" -AdditionalFiles "C:\LabSources\CustomRoles\Inedo\inedohub.1.4.4.nupkg","C:\LabSources\CustomRoles\Inedo\proget.24.0.4.nupkg","C:\LabSources\CustomRoles\Inedo\helpers.ps1","C:\LabSources\CustomRoles\Inedo\cert.pfx"
+$roleParams = @{
+    Name = 'DemoRole'
+    InitScript = 'C:\temp\DemoRole.ps1'
+    AdditionalFiles = 'C:\git\DemoRole\firewallrules.csv'
+}
+
+New-CustomRole @roleParams
+```
+
 ## Starting A Lab
 
 Once you have a lab configuration, you can start the lab based on it.
