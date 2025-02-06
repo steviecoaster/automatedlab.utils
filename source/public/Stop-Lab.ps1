@@ -20,6 +20,12 @@ function Stop-Lab {
         $Name
     )
 
-    Import-Lab -Name $Name
-    Get-LabVM | Stop-LabVM
+    try {
+
+        Import-Lab -Name $Name -ErrorAction Stop
+        Get-LabVM | Stop-LabVM
+    }
+    catch {
+        Write-Error -Message 'Lab was not found. Use Start-Lab to start or build first' -Exception ([System.IO.FileNotFoundException]::New())
+    }
 }

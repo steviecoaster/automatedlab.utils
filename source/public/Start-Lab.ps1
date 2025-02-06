@@ -36,11 +36,19 @@ function Start-Lab {
         $configuration = Get-LabConfiguration -Name $Name
         $parameters = $configuration['Parameters']
 
-        if($AdditionalParameters){
-            $AdditionalParameters.GetEnumerator() | ForEach-Object{
-                $parameters.Add($_.Key,$_.Value)
+        if ($AdditionalParameters) {
+            $AdditionalParameters.GetEnumerator() | ForEach-Object {
+                $parameters.Add($_.Key, $_.Value)
             }
         }
-        & $configuration['Definition'] @parameters
+
+        try {
+            Write-Warning "Attempting to start lab: $Name"
+            Import-Lab -Name $Name -ErrorAction Stop
+        }
+        catch {
+            Write-Warning "Lab $Name doesn't exist, creating and starting..."
+            & $configuration['Definition'] @parameters
+        }
     }
 }
