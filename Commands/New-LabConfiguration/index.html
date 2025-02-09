@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>New-LabConfiguration - AutomatedLab.Utils Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "New-LabConfiguration";
+        var mkdocs_page_input_path = "Commands\\New-LabConfiguration.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> AutomatedLab.Utils Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Get-CustomRole/">Get-CustomRole</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Get-LabConfiguration/">Get-LabConfiguration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Get-LabConfigurationPath/">Get-LabConfigurationPath</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../New-CustomRole/">New-CustomRole</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">New-LabConfiguration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#syntax">SYNTAX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#default-default">default (Default)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#git">Git</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">EXAMPLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-1">EXAMPLE 1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-2">EXAMPLE 2</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">PARAMETERS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#-name">-Name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#-definition">-Definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#-parameters">-Parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#-url">-Url</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#-progressaction">-ProgressAction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#commonparameters">CommonParameters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inputs">INPUTS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#outputs">OUTPUTS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notes">NOTES</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#related-links">RELATED LINKS</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Remove-LabConfiguration/">Remove-LabConfiguration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Start-Lab/">Start-Lab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Stop-Lab/">Stop-Lab</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/steviecoaster/AutomatedLab.Utils">GitHub</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">AutomatedLab.Utils Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Command Reference</li>
+      <li class="breadcrumb-item active">New-LabConfiguration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="new-labconfiguration">New-LabConfiguration</h1>
+<h2 id="synopsis">SYNOPSIS</h2>
+<p>Creates a new lab configuration</p>
+<h2 id="syntax">SYNTAX</h2>
+<h3 id="default-default">default (Default)</h3>
+<pre><code class="language-powershell">New-LabConfiguration -Name &lt;String&gt; -Definition &lt;String&gt; [-Parameters &lt;Hashtable&gt;]
+ [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+</code></pre>
+<h3 id="git">Git</h3>
+<pre><code class="language-powershell">New-LabConfiguration -Name &lt;String&gt; [-Parameters &lt;Hashtable&gt;] -Url &lt;String&gt;
+ [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+</code></pre>
+<h2 id="examples">EXAMPLES</h2>
+<h3 id="example-1">EXAMPLE 1</h3>
+<pre><code class="language-powershell">$conf = @{
+Name = 'Example'
+Definition = 'C:\temp\sample.ps1'
+Parameters = @{
+    Animal = 'Dog'
+    Breed = 'Lab'
+    }
+}
+
+New-LabConfiguration @conf
+</code></pre>
+<h3 id="example-2">EXAMPLE 2</h3>
+<pre><code class="language-powershell">$conf = @{
+Name = 'Example'
+Url = 'https://files.fabrikam.com/myscript.ps1'
+Parameters = @{
+    Animal = 'Dog'
+    Breed = 'Lab'
+   }
+}
+
+New-LabConfiguration @conf
+</code></pre>
+<h2 id="parameters">PARAMETERS</h2>
+<h3 id="-name">-Name</h3>
+<p>The name for the configuration</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-definition">-Definition</h3>
+<p>A .ps1 file you wish to save with the configuration</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: default
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-parameters">-Parameters</h3>
+<p>A hashtable of Parameters that will be passed to the Definition when executed</p>
+<pre><code class="language-yaml">Type: Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-url">-Url</h3>
+<p>A url to a PowerShell script you wish to include as the definition</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: Git
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-progressaction">-ProgressAction</h3>
+<p>{{ Fill ProgressAction Description }}</p>
+<pre><code class="language-yaml">Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="commonparameters">CommonParameters</h3>
+<p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
+<h2 id="inputs">INPUTS</h2>
+<h2 id="outputs">OUTPUTS</h2>
+<h2 id="notes">NOTES</h2>
+<h2 id="related-links">RELATED LINKS</h2>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../New-CustomRole/" class="btn btn-neutral float-left" title="New-CustomRole"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Remove-LabConfiguration/" class="btn btn-neutral float-right" title="Remove-LabConfiguration">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../New-CustomRole/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Remove-LabConfiguration/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
