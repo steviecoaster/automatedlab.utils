@@ -21,7 +21,7 @@ function New-CustomRole {
     Create a new role called SampleRole. It will be bootstrapped for you.
 
     .EXAMPLE
-    NEw-CustomRole -Name SampleRole -InitScript C:\scripts\role_scripts\SampleRole.ps1
+    New-CustomRole -Name SampleRole -InitScript C:\scripts\role_scripts\SampleRole.ps1
 
     Create a new role called SampleRole, and use an existing InitScript
 
