@@ -55,8 +55,8 @@ function New-LabConfiguration {
         [String]
         $Definition,
 
-        [Parameter(Mandatory, ParameterSetName = 'Git')]
-        [Parameter(Mandatory, ParameterSetName = 'default')]
+        [Parameter(ParameterSetName = 'Git')]
+        [Parameter(ParameterSetName = 'default')]
         [Hashtable]
         $Parameters,
 
@@ -67,21 +67,39 @@ function New-LabConfiguration {
 
     end {
 
+        $ConfigurationBase = Join-Path $env:LOCALAPPDATA -ChildPath 'PowerShell'
+        $slug = Join-Path $env:USERNAME -ChildPath $Name
+
+        $Configuration = Join-Path $ConfigurationBase -ChildPath $slug
+
+        if (-not $Parameters) {
+            $Parameters = @{}
+        }
+
         #Add the name
         $Parameters.Add('Name', $Name)
         
         switch ($PSCmdlet.ParameterSetName) {
             'Git' {
-                $script = [System.Net.WebClient]::new().DownloadString($Url)
+                $Definition = Join-Path $Configuration -ChildPath 'Definition.ps1' 
             }
             default {
-                $script = Get-Content $Definition -Raw
+                $Definition = Resolve-Path $Definition
             }
         }
 
         @{
-            Definition = [Scriptblock]::Create($script)
+            Definition = $Definition
             Parameters = $Parameters
         } | Export-Configuration -CompanyName $env:USERNAME -Name $Name -Scope User
+
+        # The configuration has to exist on disk before we can use it to build the path
+        # where the definition will be saved when downloading from a Url.
+        # So we postpone processing until we have exported the configuration with the correct
+        # value, and then just drop the file there.
+        if ($url) {
+            [System.Net.WebClient]::new().DownloadFile($Url, $Definition)       
+        }         
+
     }
 }

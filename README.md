@@ -73,7 +73,7 @@ New-LabConfiguration @params
 
 ## Adding a Custom Role
 
-One of AutomatedLabs best features is the ability to define Custom Roles. These Roles are PowerShell that run after the VM has been provisioned, but before it is handed back to you for use. Think of a Custom Role _kind of_ like activies  you can define during Sysprep. They have a specific shape, and this command makes it very easy for you to just provide what you want to include with the Role, and it gets created.
+One of AutomatedLabs best features is the ability to define Custom Roles. These Roles are PowerShell that run after the VM has been provisioned, but before it is handed back to you for use. Think of a Custom Role _kind of_ like activities  you can define during Sysprep. They have a specific shape, and this command makes it very easy for you to just provide what you want to include with the Role, and it gets created.
 
 ```powershell
 new-customRole -Name InedoProGet -InitScript "C:\LabSources\CustomRoles\Inedo\InedoProGet.ps1" -AdditionalFiles "C:\LabSources\CustomRoles\Inedo\inedohub.1.4.4.nupkg","C:\LabSources\CustomRoles\Inedo\proget.24.0.4.nupkg","C:\LabSources\CustomRoles\Inedo\helpers.ps1","C:\LabSources\CustomRoles\Inedo\cert.pfx"
@@ -85,6 +85,21 @@ $roleParams = @{
 
 New-CustomRole @roleParams
 ```
+
+## Getting Lab Configuration Information
+
+### The Get-CustomRole command
+
+You can use `Get-CustomRole` to return a list of all of the available Custom Roles on the system.
+
+### The Get-LabConfiguration command
+
+You can use `Get-LabConfiguration` to return the configuration information saved for the lab specified by the `-Name` parameter.
+
+### The Get-LabConfigurationPath command
+
+This will return the path on disk where the configuration is stored. Used internally for saving Defintions with configuration
+but exported publicly as it could be useful to use in scripting scenarios
 
 ## Starting A Lab
 
