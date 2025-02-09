@@ -26,7 +26,7 @@ cd automatedlab.utils
 Import-Module ./AutomatedLab.Utils/0.1.0/AutomatedLab.Utils.psd1
 ```
 
-### Install through the PowerShell Gallery (COMING SOON):
+### Install through the PowerShell Gallery
 
 #### Windows PowerShell
 

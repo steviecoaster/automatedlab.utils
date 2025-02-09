@@ -12,7 +12,7 @@
 RootModule = '.\AutomatedLab.Utils.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -24,13 +24,13 @@ GUID = '745137e1-4170-45be-bddb-2d25d0d5a650'
 Author = 'Stephen Valdinger'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+# CompanyName = ''
 
 # Copyright statement for this module
-Copyright = '(c) Stephen Valdinger. All rights reserved.'
+# Copyright = '(c) Stephen Valdinger. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+ Description = 'Provides a set of functions to help with storing and executing AutomatedLab environments, and Custom Roles'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
