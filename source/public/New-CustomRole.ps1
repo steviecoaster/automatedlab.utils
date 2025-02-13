@@ -43,11 +43,11 @@ function New-CustomRole {
 
         [Parameter()]
         [ValidateScript({ 
-                if ((Test-Path $_) -and ((Get-Item $_).Name -eq "$Name.ps1")) {
+                if ((Test-Path $_) -and ((Get-Item $_).Extension -eq ".ps1")) {
                     $true
                 } 
                 else {
-                    throw "The init script must be named $Name.ps1"
+                    throw "The init script either doesn't exist or must be a .ps1 file!"
                 }
             })]
         [String]
@@ -77,7 +77,7 @@ function New-CustomRole {
            
             if ($InitScript) {
                 # If user provides an init script, put it in the role folder
-                Copy-Item $InitScript -Destination $rolePath
+                Copy-Item $InitScript -Destination "$rolePath\$Name.ps1"
             }
 
             elseif($InitUrl) {
