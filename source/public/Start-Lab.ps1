@@ -38,7 +38,7 @@ function Start-Lab {
 
         if ($AdditionalParameters) {
             $AdditionalParameters.GetEnumerator() | ForEach-Object {
-                $parameters.Add($_.Key, $_.Value)
+                $parameters[$_.Key] = $_.Value
             }
         }
 

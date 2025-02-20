@@ -94,7 +94,7 @@ function New-CustomRole {
             
             # Copy any additional files to the role
             if ($AdditionalFiles) {
-                Copy-Item $AdditionalFiles -Destination $rolePath
+                Copy-Item (Resolve-Path $AdditionalFiles) -Destination $rolePath
             }
         }
 
