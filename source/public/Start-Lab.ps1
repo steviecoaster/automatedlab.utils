@@ -45,6 +45,7 @@ function Start-Lab {
         try {
             Write-Warning "Attempting to start lab: $Name"
             Import-Lab -Name $Name -ErrorAction Stop
+            Get-LabVM | Start-LabVM
         }
         catch {
             Write-Warning "Lab $Name doesn't exist, creating and starting..."
