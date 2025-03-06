@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>New-HostsFileEntry - AutomatedLab.Utils Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "New-HostsFileEntry";
+        var mkdocs_page_input_path = "Commands\\New-HostsFileEntry.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> AutomatedLab.Utils Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Get-CustomRole/">Get-CustomRole</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Get-LabConfiguration/">Get-LabConfiguration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Get-LabConfigurationPath/">Get-LabConfigurationPath</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../New-CustomRole/">New-CustomRole</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../New-LabConfiguration/">New-LabConfiguration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Remove-LabConfiguration/">Remove-LabConfiguration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Start-Lab/">Start-Lab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Stop-Lab/">Stop-Lab</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/steviecoaster/AutomatedLab.Utils">GitHub</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">AutomatedLab.Utils Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">New-HostsFileEntry</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="new-hostsfileentry">New-HostsFileEntry</h1>
+<h2 id="synopsis">SYNOPSIS</h2>
+<p>Adds an entry to the HOSTS file for the given ip address and hostname</p>
+<h2 id="syntax">SYNTAX</h2>
+<pre><code>New-HostsFileEntry [-IPAddress] &lt;String&gt; [-Hostname] &lt;String&gt; [[-Note] &lt;String&gt;]
+ [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+</code></pre>
+<h2 id="description">DESCRIPTION</h2>
+<p>{{ Fill in the Description }}</p>
+<h2 id="examples">EXAMPLES</h2>
+<h3 id="example-1">EXAMPLE 1</h3>
+<pre><code>New-HostsFileEntry -IpAddress 127.0.0.1 -Hostname widget.fabrikam.com
+</code></pre>
+<h3 id="example-2">EXAMPLE 2</h3>
+<pre><code>New-HostsFileEntry -IpAddress 10.10.10.100 -Hostname widget.fabrikam.com -Note 'this is my fancy widget server'
+</code></pre>
+<h2 id="parameters">PARAMETERS</h2>
+<h3 id="-ipaddress">-IPAddress</h3>
+<p>The ip address to add</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-hostname">-Hostname</h3>
+<p>The hostname to add</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-note">-Note</h3>
+<p>An optional note about the entry</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-progressaction">-ProgressAction</h3>
+<p>{{ Fill ProgressAction Description }}</p>
+<pre><code class="language-yaml">Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="commonparameters">CommonParameters</h3>
+<p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
+<h2 id="inputs">INPUTS</h2>
+<h2 id="outputs">OUTPUTS</h2>
+<h2 id="notes">NOTES</h2>
+<h2 id="related-links">RELATED LINKS</h2>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
