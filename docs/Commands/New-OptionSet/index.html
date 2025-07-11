@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>New-OptionSet - AutomatedLab.Utils Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "New-OptionSet";
+        var mkdocs_page_input_path = "docs\\Commands\\New-OptionSet.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> AutomatedLab.Utils Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../installation/">Installation</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Command Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/New-HostsFileEntry/">New-HostsFileEntry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/Get-CustomRole/">Get-CustomRole</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/Get-LabConfiguration/">Get-LabConfiguration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/Get-LabConfigurationPath/">Get-LabConfigurationPath</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/New-CustomRole/">New-CustomRole</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/New-LabConfiguration/">New-LabConfiguration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/Remove-LabConfiguration/">Remove-LabConfiguration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/Start-Lab/">Start-Lab</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../Commands/Stop-Lab/">Stop-Lab</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Definitions/">Definitions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/steviecoaster/AutomatedLab.Utils">GitHub</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">AutomatedLab.Utils Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">New-OptionSet</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="new-optionset">New-OptionSet</h1>
+<h2 id="synopsis">SYNOPSIS</h2>
+<p>Creates a numbered list of options for display or selection purposes.</p>
+<h2 id="syntax">SYNTAX</h2>
+<pre><code>New-OptionSet [-Options] &lt;String[]&gt; [-ProgressAction &lt;ActionPreference&gt;] [&lt;CommonParameters&gt;]
+</code></pre>
+<h2 id="description">DESCRIPTION</h2>
+<p>The New-OptionSet function takes an array of options and formats them as a numbered list, 
+starting from 1.
+This is useful for creating menus, displaying choices, or formatting 
+options for user selection.</p>
+<h2 id="examples">EXAMPLES</h2>
+<h3 id="example-1">EXAMPLE 1</h3>
+<pre><code>New-OptionSet -Options @('Red', 'Blue', 'Green')
+</code></pre>
+<p>Output:
+1.
+Red
+2.
+Blue
+3.
+Green</p>
+<h3 id="example-2">EXAMPLE 2</h3>
+<pre><code>$colors = @('Red', 'Blue', 'Green', 'Yellow')
+New-OptionSet -Options $colors
+</code></pre>
+<p>Output:
+1.
+Red
+2.
+Blue
+3.
+Green
+4.
+Yellow</p>
+<h3 id="example-3">EXAMPLE 3</h3>
+<pre><code>New-OptionSet -Options 'Option A', 'Option B', 'Option C'
+</code></pre>
+<p>Output:
+1.
+Option A
+2.
+Option B
+3.
+Option C</p>
+<h2 id="parameters">PARAMETERS</h2>
+<h3 id="-options">-Options</h3>
+<p>An array of strings representing the options to be numbered and displayed.</p>
+<pre><code class="language-yaml">Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-progressaction">-ProgressAction</h3>
+<p>{{ Fill ProgressAction Description }}</p>
+<pre><code class="language-yaml">Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="commonparameters">CommonParameters</h3>
+<p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
+<h2 id="inputs">INPUTS</h2>
+<h2 id="outputs">OUTPUTS</h2>
+<h3 id="systemstring">System.String</h3>
+<h3 id="returns-formatted-strings-with-numbered-options">Returns formatted strings with numbered options.</h3>
+<h2 id="notes">NOTES</h2>
+<p>This function is useful for creating interactive menus or displaying choices 
+in a consistent numbered format.</p>
+<h2 id="related-links">RELATED LINKS</h2>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -44,6 +44,26 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#defining-a-lab-configuration">Defining A Lab Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adding-a-custom-role">Adding a Custom Role</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-lab-configuration-information">Getting Lab Configuration Information</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-get-customrole-command">The Get-CustomRole command</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-get-labconfiguration-command">The Get-LabConfiguration command</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-get-labconfigurationpath-command">The Get-LabConfigurationPath command</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#starting-a-lab">Starting A Lab</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stopping-a-lab">Stopping A Lab</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#removing-a-lab">Removing A Lab</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -71,6 +91,10 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="Commands/Stop-Lab/">Stop-Lab</a>
                   </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="Definitions/">Definitions</a>
+                </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="" href="https://github.com/steviecoaster/AutomatedLab.Utils">GitHub</a>
@@ -113,7 +137,64 @@
 <li><code>Remove-LabConfiguration</code></li>
 <li><code>Start-Lab</code></li>
 <li><code>Stop-Lab</code></li>
+<li><code>New-UserPrompt</code></li>
+<li><code>New-OptionSet</code></li>
 </ul>
+<h2 id="defining-a-lab-configuration">Defining A Lab Configuration</h2>
+<p>Defining a lab requires 3 pieces of information:</p>
+<ul>
+<li>Name: This is a name for  your configuration. (TIP! Make this the same as the name in your definition file)</li>
+<li>Definition: This is a PowerShell script that defines how your lab is built. You can supply a definition via <code>-Definition</code> for a local file,
+or via <code>-Url</code> to provide a link to a ps1 script hosted as a Github gist, or in a repository. See <a href="Definitions/">Defining a Lab Definition</a> for more information.</li>
+<li>Parameters: This is a hashtable of parameters to pass to the PowerShell script</li>
+</ul>
+<p>For example, here is my configuration for my lab based on <a href="https://docs.chocolatey.org/en-us/c4b-environments/quick-start-environment/chocolatey-for-business-quick-start-guide/">Chocolatey's Quickstart Guide</a>.</p>
+<pre><code class="language-powershell">$params =  @{
+    Name = 'QSG'
+    Definition = &quot;C:\Users\stephen\Documents\Git\ChocoStuff\LabEnvironments\QuickStartGuide\Lab\Definition.ps1&quot;
+    Parameters = @{
+        Credential = Get-Credential
+        DatabaseCredential = Get-Credential
+        CertificateDnsName = 'chocolatey.steviecoaster.dev'
+    }
+}
+
+New-LabConfiguration @params
+</code></pre>
+<h2 id="adding-a-custom-role">Adding a Custom Role</h2>
+<p>One of AutomatedLabs best features is the ability to define Custom Roles. These Roles are PowerShell that run after the VM has been provisioned, but before it is handed back to you for use. Think of a Custom Role <em>kind of</em> like activities  you can define during Sysprep. They have a specific shape, and this command makes it very easy for you to just provide what you want to include with the Role, and it gets created.</p>
+<pre><code class="language-powershell">new-customRole -Name InedoProGet -InitScript &quot;C:\LabSources\CustomRoles\Inedo\InedoProGet.ps1&quot; -AdditionalFiles &quot;C:\LabSources\CustomRoles\Inedo\inedohub.1.4.4.nupkg&quot;,&quot;C:\LabSources\CustomRoles\Inedo\proget.24.0.4.nupkg&quot;,&quot;C:\LabSources\CustomRoles\Inedo\helpers.ps1&quot;,&quot;C:\LabSources\CustomRoles\Inedo\cert.pfx&quot;
+$roleParams = @{
+    Name = 'DemoRole'
+    InitScript = 'C:\temp\DemoRole.ps1'
+    AdditionalFiles = 'C:\git\DemoRole\firewallrules.csv'
+}
+
+New-CustomRole @roleParams
+</code></pre>
+<h2 id="getting-lab-configuration-information">Getting Lab Configuration Information</h2>
+<h3 id="the-get-customrole-command">The Get-CustomRole command</h3>
+<p>You can use <code>Get-CustomRole</code> to return a list of all of the available Custom Roles on the system.</p>
+<h3 id="the-get-labconfiguration-command">The Get-LabConfiguration command</h3>
+<p>You can use <code>Get-LabConfiguration</code> to return the configuration information saved for the lab specified by the <code>-Name</code> parameter.</p>
+<h3 id="the-get-labconfigurationpath-command">The Get-LabConfigurationPath command</h3>
+<p>This will return the path on disk where the configuration is stored. Used internally for saving Defintions with configuration
+but exported publicly as it could be useful to use in scripting scenarios</p>
+<h2 id="starting-a-lab">Starting A Lab</h2>
+<p>Once you have a lab configuration, you can start the lab based on it.</p>
+<pre><code class="language-powershell">Start-Lab -Name QSG
+</code></pre>
+<p>You may at times need to pass in additional parameters to your lab. You can use <code>-AdditonalParameters</code> for this:</p>
+<pre><code class="language-powershell">Start-Lab -Name QSG -AdditionalParametes @{ Widget = 'Fizzbuzz'}
+</code></pre>
+<h2 id="stopping-a-lab">Stopping A Lab</h2>
+<p>When you are finished with a lab, you likely want to stop it running. You can do so like this:</p>
+<pre><code class="language-powershell">Stop-Lab -Name QSG
+</code></pre>
+<h2 id="removing-a-lab">Removing A Lab</h2>
+<pre><code class="language-powershell">Remove-Lab -Name QSG
+</code></pre>
+<p><em>* Note: You will need to have the lab imported to remove it, so you may need to run <code>Import-Lab -Name $Lab</code> first!</em></p>
               
             </div>
           </div><footer>
@@ -162,5 +243,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-03-06 14:26:30.103170+00:00
+Build Date UTC : 2025-07-11 17:30:45.758619+00:00
 -->

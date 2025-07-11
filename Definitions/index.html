@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Installation - AutomatedLab.Utils Documentation</title>
+    <title>Definitions - AutomatedLab.Utils Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Installation";
-        var mkdocs_page_input_path = "installation.md";
+        var mkdocs_page_name = "Definitions";
+        var mkdocs_page_input_path = "Definitions.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -43,24 +43,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#before-you-begin">BEFORE YOU BEGIN</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#build-from-source">Build from source</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#install-through-the-powershell-gallery">Install through the PowerShell Gallery</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#windows-powershell">Windows PowerShell</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#powershell-7">PowerShell 7+</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#chocolatey-coming-soon">Chocolatey (COMING SOON)</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Command Reference</span></p>
@@ -84,8 +68,16 @@
                   <li class="toctree-l1"><a class="reference internal" href="../Commands/Stop-Lab/">Stop-Lab</a>
                   </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Definitions/">Definitions</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Definitions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#use-advanced-parameter-syntax">Use Advanced Parameter Syntax</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#new-labdefinition">New-LabDefinition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -106,7 +98,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Installation</li>
+      <li class="breadcrumb-item active">Definitions</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -115,33 +107,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="installation">Installation</h1>
-<h3 id="before-you-begin">BEFORE YOU BEGIN</h3>
-<p>Ensure that you have installed AutomatedLab (We'll assume you have since you wish to use this thing, but if not, see https://automatedlab.org/en/latest/Wiki/Basic/install/)</p>
-<h3 id="build-from-source">Build from source</h3>
-<p>Building from source will require ModuleBuilder from the PowerShell Gallery:</p>
-<pre><code class="language-powershell">Install-Module ModuleBuilder -Scope CurrentUser
-git clone https:github.com/steviecoaster/automatedlab.utils.git
-cd automatedlab.utils
-. ./Build.ps1
-Import-Module ./AutomatedLab.Utils/0.1.0/AutomatedLab.Utils.psd1
+                <h1 id="getting-started-with-automatedlab-definitions">Getting started with AutomatedLab definitions</h1>
+<p>AutomatedLab definitions are simply PowerShell scripts that define all of the virtual machines, networking, and additional vm configurations you require in your lab.
+While defining a lab is outside the scope of this module (See https://automatedlab.org), how you begin to write  your definitions is important.</p>
+<h2 id="use-advanced-parameter-syntax">Use Advanced Parameter Syntax</h2>
+<p>Each definition should define a Parameter block with at least a Name parameter:</p>
+<pre><code class="language-powershell">[CmdletBinding()]
+Param(
+    [Parameter()]
+    [String]
+    $Name
+)
 </code></pre>
-<h3 id="install-through-the-powershell-gallery">Install through the PowerShell Gallery</h3>
-<h4 id="windows-powershell">Windows PowerShell</h4>
-<pre><code class="language-powershell">Install-Module AutomatedLab.Utils -Scope CurrentUser
+<h2 id="new-labdefinition">New-LabDefinition</h2>
+<p>Immediately following your parameter block, you should call the <code>New-LabDefinition</code> cmdlet and provide the name of your lab, and the default virtualization engine.
+Valid options for the virtualization engine are <code>HyperV</code> and <code>Azure</code>.</p>
+<pre><code class="language-powershell">New-LabDefinition -Name $Name -DefaultVirtualizationEngine Hyperv
 </code></pre>
-<h4 id="powershell-7">PowerShell 7+</h4>
-<pre><code class="language-powershell">Install-PSResource AutomatedLab.Utils -Scope CurrentUser
-</code></pre>
-<h3 id="chocolatey-coming-soon">Chocolatey (COMING SOON)</h3>
-<pre><code class="language-powershell">choco install automatedlab.utils -y -s https://community.chocolatey.org/api/v2
-</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<p>With this required information in place you may continue to define your lab requirements. Once you are satisfied, save your PowerShell script so you can provide it <code>New-LabConfiguration</code> using the <code>-Definition</code> parameter. You can also create a Github Gist or place the ps1 file in a repository and provide the raw link to the <code>-Url</code> parameter!</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Commands/New-HostsFileEntry/" class="btn btn-neutral float-right" title="New-HostsFileEntry">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Commands/Stop-Lab/" class="btn btn-neutral float-left" title="Stop-Lab"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -164,10 +153,8 @@ Import-Module ./AutomatedLab.Utils/0.1.0/AutomatedLab.Utils.psd1
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Commands/Stop-Lab/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../Commands/New-HostsFileEntry/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
